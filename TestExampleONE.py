@@ -23,11 +23,11 @@ AñoR2 = input()
 MesR2 = input()
 DiaR2 = input()
 
-Registro1.SetPeso(PesoR2)
-Registro1.SetAltura(AlturaR2)
-Registro1.SetAñoReg(AñoR2)
-Registro1.SetMesReg(MesR2)
-Registro1.SetDiaReg(DiaR2)
+Registro2.SetPeso(PesoR2)
+Registro2.SetAltura(AlturaR2)
+Registro2.SetAñoReg(AñoR2)
+Registro2.SetMesReg(MesR2)
+Registro2.SetDiaReg(DiaR2)
 
 Persona1 = Persona()
 
