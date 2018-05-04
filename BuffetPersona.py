@@ -9,6 +9,9 @@ class Persona(object):
     def SetApellido(self,Apellido):
         self.Apellio = Apellido
 
+    def GetDescuento(self):
+        return 0
+
 class Alumno(Persona):
 
     Division = None
@@ -22,3 +25,6 @@ class Profesor(Persona):
 
     def SetDescuento(self,Descuento):
         self.Descuento = Descuento
+
+    def GetDescuento(self):
+        return self.Descuento

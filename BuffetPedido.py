@@ -4,7 +4,7 @@ class Pedido(object):
     Plato = None
     Persona = None
     Hora = None
-    Bool = None
+    Bool = False
 
     def SetFecha(self,Fecha):
         self.Fecha = Fecha
@@ -18,5 +18,8 @@ class Pedido(object):
     def SetHora(self,Hora):
         self.Hora = Hora
 
-    def SetBool(self,Bool):
-        self.Bool = Bool
+    def TrueBool(self):
+        self.Bool = True
+
+    def GetPrecioDesc(self):
+         return self.Plato.Precio - self.Persona.GetDescuento() * self.Plato.Precio / 100
