@@ -174,4 +174,4 @@ while A:
 
                 item.GetPrecioDesc()
 
-                print("<Plato " + Cont+" Listado>")
+                print("<Plato " + Cont +" Listado>")

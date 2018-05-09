@@ -19,6 +19,7 @@ class Alumno(Persona):
     def SetDivision(self,Division):
         self.Division = Division
 
+
 class Profesor(Persona):
 
     Descuento = None
