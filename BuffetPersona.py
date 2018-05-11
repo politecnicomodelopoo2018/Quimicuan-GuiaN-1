@@ -1,13 +1,13 @@
 class Persona(object):
 
     Nombre = None
-    Apellio = None
+    Apellido = None
 
     def SetNombre(self, Nombre):
         self.Nombre = Nombre
 
     def SetApellido(self,Apellido):
-        self.Apellio = Apellido
+        self.Apellido = Apellido
 
     def GetDescuento(self):
         return 0

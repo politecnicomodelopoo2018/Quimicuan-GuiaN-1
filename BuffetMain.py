@@ -5,11 +5,7 @@ from BuffetPedido import Pedido
 from BuffetBuffet import Buffet
 
 A = True
-Jorge = Alumno()
-Pruchi = Profesor()
 Buffes = Buffet()
-Plato1 = Plato()
-Pedido1 = Pedido()
 
 while A:
 
@@ -18,6 +14,8 @@ while A:
     Opcion = int(input())
 
     if Opcion == 1: ##AgAlumno
+
+        Jorge = Alumno()
 
         Nombre = input()
         Jorge.SetNombre(Nombre)
@@ -33,6 +31,8 @@ while A:
         print("<AlumnoAgregado>")
 
     if Opcion == 2: ##AgProf
+
+        Pruchi = Profesor()
 
         Nombre = input()
         Pruchi.SetNombre(Nombre)
@@ -85,11 +85,13 @@ while A:
 
     if Opcion == 4: ##AgPlato
 
+        Plato1 = Plato()
+
         Nombre = input()
-        Plato1.Nombre = Nombre
+        Plato1.SetNombre(Nombre)
 
         Precio = int(input())
-        Plato1.Precio = Precio
+        Plato1.SetPrecio(Precio)
 
         Buffes.plato.append(Plato1)
 
@@ -126,6 +128,8 @@ while A:
                 print("<PlatoEliminado>")
 
     if Opcion == 8: ##AgPedido
+
+        Pedido1 = Pedido()
 
         Pedido1.Persona = Jorge
         Pedido1.Plato = Plato1
@@ -175,3 +179,15 @@ while A:
                 item.GetPrecioDesc()
 
                 print("<Plato " + Cont +" Listado>")
+
+    if Opcion == 12:##TextoPersonas
+        Buffes.TxtPersona()
+
+    if Opcion == 13:##CargarPersona
+        Buffes.CargarPersona()
+
+    if Opcion == 14:##GuardarPlato
+        Buffes.TxtPlato()
+
+    if Opcion == 15:##CargarPlato
+        Buffes.CargarPlato()
