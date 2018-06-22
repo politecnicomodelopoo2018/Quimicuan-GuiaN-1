@@ -25,7 +25,10 @@ class Passenger (Person):
         self.VIP = VIP
 
     def __init__(self):
-        self.Specialrequest = []
+        self.SpecialRequest = []
+
+    def AddSpecialRequest(self, SpecialRequest):
+        self.SpecialRequest.append(SpecialRequest)
 
 class Crew (Person):
 

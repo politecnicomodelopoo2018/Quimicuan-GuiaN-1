@@ -10,5 +10,5 @@ class Plane (object):
     def SetMaxPassengers(self, MaxPassengers):
         self.MaxPassengers = MaxPassengers
 
-    def MinCrew(self, MinCrew):
+    def SetMinCrew(self, MinCrew):
         self.MinCrew = MinCrew
