@@ -2,7 +2,7 @@ from Flight import *
 from Person import *
 from Plane import *
 import json
-from Exercises import *
+import datetime
 
 
 class System (object):
@@ -50,7 +50,7 @@ for item in Dictionary["Personas"]:
 
         Passengers.SetName(item["nombre"])
         Passengers.SetSurname(item["apellido"])
-        Passengers.SetBirthdate(item["fechaNacimiento"])
+        Passengers.SetBirthdate(datetime.datetime.strptime(item["fechaNacimiento"], "%Y-%m-%d"))
         Passengers.SetID(item["dni"])
         Passengers.SetVIP(item["vip"])
         if "solicitudesEspeciales" in Dictionary["Personas"]:
@@ -66,7 +66,7 @@ for item in Dictionary["Personas"]:
         Pilots.SetSurname(item["apellido"])
         Pilots.SetBirthdate(item["fechaNacimiento"])
         Pilots.SetID(item["dni"])
-        for item2 in ["avionesHabilitados"]:
+        for item2 in item["avionesHabilitados"]:
             Pilots.AddEnablePlane(item2)
 
         SystemReal.AddPerson(Pilots)
@@ -79,9 +79,9 @@ for item in Dictionary["Personas"]:
         Services.SetSurname(item["apellido"])
         Services.SetBirthdate(item["fechaNacimiento"])
         Services.SetID(item["dni"])
-        for item2 in ["avionesHabilitados"]:
+        for item2 in item["avionesHabilitados"]:
             Services.AddEnablePlane(item2)
-        for item3 in ["idiomas"]:
+        for item3 in item["idiomas"]:
             Services.AddLanguage(item3)
 
         SystemReal.AddPerson(Services)
@@ -97,9 +97,11 @@ for item in Dictionary["Vuelos"]:
     Flights.SetTime(item["hora"])
     Flights.SetOrigin(item["origen"])
     Flights.SetDestination(item["destino"])
-    for item2 in ["tripulacion"]:
-        Flights.AddCrew(item2)
-    for item3 in ["pasajeros"]:
+    for item2 in item["tripulacion"]:
+        for item3 in SystemReal.Person:
+            if item2 == item3.ID:
+                Flights.AddCrew(item3)
+    for item3 in item["pasajeros"]:
         for item4 in SystemReal.Person:
             if item3 == item4.ID:
                 Flights.AddPassenger(item4)
@@ -107,13 +109,76 @@ for item in Dictionary["Vuelos"]:
     SystemReal.AddFight(Flights)
 
 
-Menu = FirstExerciseClass()
+#ExerciseOne#
+
+Origin = input()
+Destination = input()
 
 for item in SystemReal.Flight:
-    if item.Origin == Menu.OriginFlight:
-        if item.Destination == Menu.DestinationFlight:
+    if item.Origin == Origin:
+        if item.Destination == Destination:
             for item2 in item.Passengers:
-                Menu.AddPassengerFlight(item2)
+                print("---------------")
+                print(item2.Name)
+                print(item2.Surname)
+                print(item2.Birthdate)
+                print(item2.ID)
 
-for item in Menu.PassengersFlight:
-    print(item)
+#ExerciseTwo#
+
+Origin2 = input()
+Destination2 = input()
+OldPassenger = None
+
+for item in SystemReal.Flight:
+    if item.Origin == Origin2:
+        if item.Destination == Destination2:
+            for item2 in item.Passengers:
+                if OldPassenger == None:
+                    OldPassenger = item2
+                if item2.Birthdate < OldPassenger.Birthdate:
+                    OldPassenger = item2
+            print("---------------")
+            print(OldPassenger.Name)
+            print(OldPassenger.Surname)
+            print(OldPassenger.Birthdate)
+            print(OldPassenger.ID)
+
+#ExerciseThree#
+
+
+for item in SystemReal.Flight:
+    Counter = 0
+    PlaneFlight = None
+    for item2 in item.Crew:
+        Counter+=1
+    for item2 in SystemReal.Plane:
+        if item2.PlaneModel == item.PlaneModel:
+            PlaneFlight = item2
+    if Counter < PlaneFlight.MinCrew:
+        print("---------------")
+        print(item.PlaneModel)
+        print(item.Date)
+        print(item.Time)
+        print(item.Origin)
+        print(item.Destination)
+
+#ExerciseFour#
+
+
+for item in SystemReal.Flight:
+    for item2 in item.Crew:
+        for item3 in item2.EnablePlanes:
+            if item3 == item.PlaneModel:
+                print("---------------")
+                print(item2.ID + " Is available to flight " + item.PlaneModel)
+            if item3 != item.PlaneModel:
+                print("---------------")
+                print("Unauthorized Flight")
+                print(item.PlaneModel)
+                print(item.Date)
+                print(item.Time)
+                print(item.Origin)
+                print(item.Destination)
+            break
+        break

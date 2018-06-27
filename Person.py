@@ -15,7 +15,7 @@ class Person (object):
         self.Birthdate = Birthdate
 
     def SetID(self, ID):
-        self.ID = ID
+        self.ID = str(ID)
 
 class Passenger (Person):
 
