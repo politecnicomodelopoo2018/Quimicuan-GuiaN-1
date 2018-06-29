@@ -53,7 +53,7 @@ for item in Dictionary["Personas"]:
         Passengers.SetBirthdate(datetime.datetime.strptime(item["fechaNacimiento"], "%Y-%m-%d"))
         Passengers.SetID(item["dni"])
         Passengers.SetVIP(item["vip"])
-        if "solicitudesEspeciales" in Dictionary["Personas"]:
+        if "solicitudesEspeciales" in item:
             Passengers.AddSpecialRequest(item["solicitudesEspeciales"])
 
         SystemReal.AddPerson(Passengers)
@@ -168,17 +168,67 @@ for item in SystemReal.Flight:
 
 for item in SystemReal.Flight:
     for item2 in item.Crew:
-        for item3 in item2.EnablePlanes:
-            if item3 == item.PlaneModel:
-                print("---------------")
-                print(item2.ID + " Is available to flight " + item.PlaneModel)
-            if item3 != item.PlaneModel:
-                print("---------------")
-                print("Unauthorized Flight")
-                print(item.PlaneModel)
-                print(item.Date)
-                print(item.Time)
-                print(item.Origin)
-                print(item.Destination)
+        if item.PlaneModel not in item2.EnablePlanes:
+            print("---------------")
+            print("Unauthorized Flight")
+            print(item.PlaneModel)
+            print(item.Date)
+            print(item.Time)
+            print(item.Origin)
+            print(item.Destination)
             break
-        break
+
+#ExerciseFive#
+
+for item in SystemReal.Person:
+    DateFlight = None
+    CounterFlights = 0
+    if type(item) == Pilot or type(item) == Service:
+        for item2 in SystemReal.Flight:
+            if item in item2.Crew:
+                if DateFlight == None:
+                    DateFlight = item2.Date
+                elif item2.Date == DateFlight:
+                    CounterFlights += 1
+            if CounterFlights > 0:
+                print("---------------")
+                print("This member of the crew is breaking the rule #420")
+                print(item.Name)
+                print(item.Surname)
+                print(item.Birthdate)
+                print(item.ID)
+                break
+
+#ExerciseSix#
+
+for item in SystemReal.Person:
+    if type(item) == Passenger:
+        if item.VIP != None:
+            print("---------------")
+            print("This passenger is VIP")
+            print(item.Name)
+            print(item.Surname)
+            print(item.Birthdate)
+            print(item.ID)
+        if len(item.SpecialRequest) != 0:
+            print("---------------")
+            print("This passenger has a SpecialRequest")
+            print("SpecialRequest: " + item.SpecialRequest[0])
+            print(item.Name)
+            print(item.Surname)
+            print(item.Birthdate)
+            print(item.ID)
+
+#ExerciseSeven#
+
+for item in SystemReal.Flight:
+    print("---------------")
+    print(item.PlaneModel)
+    print(item.Date)
+    print(item.Time)
+    print(item.Origin)
+    print(item.Destination)
+    for item2 in SystemReal.Person:
+        if type(item2) == Service:
+            for item3 in item2.Language:
+                print(item2.ID + " Speaks " + item3)
