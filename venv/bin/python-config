@@ -1,4 +1,4 @@
-#!/home/yisusyrama/PycharmProjects/Yisus/Guide/venv/bin/python
+#!/home/yisusyrama/PycharmProjects/Yisus/Yisus-FirstGuide/venv/bin/python
 
 import sys
 import getopt
