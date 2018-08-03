@@ -3,32 +3,46 @@ from Py_SQL_Poder import Poder
 
 DB().SetConnection('127.0.0.1','root', 'alumno', 'quinteros')
 
-Poder = Poder()
+MenuPoder = None
+unPoder = Poder()
+MenuDios = None
 
-print("Poder -> Alta -> 0")
-print("Poder -> Baja -> 1")
-print("Poder -> Modificacion ->2")
 
-Menu = None
 
-while Menu != 3 :
+""""while MenuPoder != 4:
 
-    Menu = int(input())
+    print("----------------------------")
+    print("Poder -> Alta -> 0")
+    print("Poder -> Baja -> 1")
+    print("Poder -> Modificacion -> 2")
+    print("Poder -> ListaDePoderes -> 3")
+    print("Salir Del Programa -> 5")
+    print("----------------------------")
 
-    if Menu == 0:
+    MenuPoder = int(input())
+
+    if MenuPoder == 0:
 
         print("Descripcion Del Poder")
 
         Descripcion = input()
-
-        Poder.SetDescripcion(Descripcion)
-        Poder.Insert()
-
-        runDB = DB().run("SELECT * FROM Poder")
-
-    if Menu == 2:
+        unPoder.SetDescripcion(Descripcion)
+        unPoder.Insert()
 
 
+    if MenuPoder == 2:
+
+        print("----------------------------")
+
+        print("Lista De Poderes")
+
+        print("----------------------------")
+
+        listaPoderes = Poder.GetPoderes()
+
+        for item in listaPoderes:
+            print(" ID -> " + str(item.id) + " | " + item.descripcion)
+            print("----------------------------")
 
         print("ID Del Poder A Modificar")
 
@@ -38,12 +52,40 @@ while Menu != 3 :
 
         DescRemp = input()
 
-        Poder.Update(DescRemp, idUpdate)
+        unPoder.Update(DescRemp, idUpdate)
 
-    if Menu == 1:
+    if MenuPoder == 1:
+
+        print("----------------------------")
+
+        print("Lista De Poderes")
+
+        print("----------------------------")
+
+        listaPoderes = Poder.GetPoderes()
+
+        for item in listaPoderes:
+            print(" ID -> " + str(item.id) + " | " + item.descripcion)
+            print("----------------------------")
 
         print("ID Del Poder A Eliminar")
 
         idDelete = int(input())
 
-        Poder.Delete(idDelete)
+        unPoder.Delete(idDelete)
+
+    if MenuPoder == 3:
+
+        print("----------------------------")
+
+        print("Lista De Poderes")
+
+        print("----------------------------")
+
+        listaPoderes = Poder.GetPoderes()
+
+        for item in listaPoderes:
+            print(" ID -> " + str(item.id) + " | " + item.descripcion)
+            print("----------------------------")
+
+        input() """"""
