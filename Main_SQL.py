@@ -1,12 +1,43 @@
 from Python_SQL import DB
 from Py_SQL_Poder import Poder
+from Py_SQL_Dios import Dios
 
 DB().SetConnection('127.0.0.1','root', 'alumno', 'quinteros')
 
 MenuPoder = None
 unPoder = Poder()
+unDios = Dios()
 MenuDios = None
 
+while MenuDios != 4:
+
+    print("----------------------------")
+    print("Dios -> Alta -> 0")
+    print("Dios -> Baja -> 1")
+    print("Dios -> Modificacion -> 2")
+    print("Dios -> ListaDeDioses -> 3")
+    print("Salir Del Programa -> 5")
+    print("----------------------------")
+
+    MenuDios = int(input())
+
+    if MenuDios == 0:
+        print("Nombre Del Dios")
+
+        Nombre = input()
+        unDios.SetNombre(Nombre)
+
+        print("Deidad Del Dios")
+
+        Deidad = input()
+        unDios.SetDeidad(Deidad)
+
+        print("Tipo De Dios")
+
+        Tipo = input()
+        unDios.SetTipo(Tipo)
+
+        unPoder.Insert()
 
 
 """"while MenuPoder != 4:

@@ -20,14 +20,8 @@ class Dios(object):
         cursor = DB().run("INSERT INTO Dios (Nombre_Dios, Deidad_Dios, Tipo_Dios ) VALUES ('%s', '%s', '%s')" % (self.Nombre, self.Deidad, self.Tipo))
         self.id = cursor.lastrowid
 
-    def UpdateNombre(self, DescRemp, idUpdate):
-        DB().run("UPDATE Dios SET Nombre_Dios = ('%s') WHERE idDios = ('%d')" % (DescRemp, idUpdate))
-
-    def UpdateDeidad(self, DescRemp, idUpdate):
-        DB().run("UPDATE Dios SET Deidad_Dios = ('%s') WHERE idDios = ('%d')" % (DescRemp, idUpdate))
-
-    def UpdateTipo(self, DescRemp, idUpdate):
-        DB().run("UPDATE Dios SET Tipo_Dios = ('%s') WHERE idDios = ('%d')" % (DescRemp, idUpdate))
+    def UpdateNombre(self, Nombre, Deidad, Tipo, idUpdate):
+        DB().run("UPDATE Dios SET Nombre_Dios = ('%s'), Deidad_Dios = ('%s'), Tipo_Dios = ('%s') WHERE idDios = ('%d')" % (Nombre, Deidad, Tipo, idUpdate))
 
     def Delete(self, idDelete):
         DB().run("DELETE FROM Dios WHERE idDios = ('%d')" % (idDelete))
