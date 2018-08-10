@@ -463,9 +463,27 @@ while Menu != 20:
         print("Cantidad De Poder")
 
         Cantidad = input()
+
         unDHP.SetCantidad(Cantidad)
 
-        unDHP.Insert()
+        PasajeDHP = 0
+
+        cursor = DB().run("SELECT * FROM Dios WHERE idDios = ('%d')" % (int(idDios)))
+        sasa = cursor.fetchall()
+        if len(sasa) > 0:
+            PasajeDHP += 1
+
+        cursor = DB().run("SELECT * FROM Poder WHERE idPoder = ('%d')" % (int(idPoder)))
+        sasa = cursor.fetchall()
+        if len(sasa) > 0:
+            PasajeDHP += 1
+
+        if PasajeDHP == 2:
+            print("Este Dios Ya Tiene Ese Poder")
+            input()
+
+        if PasajeDHP != 2:
+            unDHP.Insert()
 
     if Menu == 17:
         print("----------------------------")
@@ -552,4 +570,6 @@ while Menu != 20:
         input()
 
 
-    ##DOS DHP IGUALES SALTA ERROR -> ARREGLAR
+    if Menu > 20:
+        print("Elegir Una Opcion Valida")
+        input()
