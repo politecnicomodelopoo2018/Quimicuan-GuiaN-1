@@ -20,6 +20,7 @@ class Reino(object):
     def Update(self, DescRemp, CaractRemp, idUpdate):
         DB().run("UPDATE Reino SET Descripcion_Reino = ('%s'), Caracteristica_Reino = ('%s')  WHERE idReino = ('%d')" % (DescRemp, CaractRemp, idUpdate))
 
+
     def Delete(self, idDelete):
         DB().run("DELETE FROM Reino WHERE idReino = ('%d')" % (idDelete))
 

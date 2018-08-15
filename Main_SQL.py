@@ -5,7 +5,7 @@ from Py_SQL_Reino import Reino
 from Py_SQL_Criatura import Criatura
 from Py_SQL_DiosHasPoder import DHP
 
-DB().SetConnection('127.0.0.1','root', 'alumno', 'quinteros')
+DB().SetConnection('127.0.0.1', 'root', 'alumno', 'quinteros')
 
 Menu = None
 unPoder = Poder()
